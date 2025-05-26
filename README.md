@@ -43,6 +43,120 @@ I built a linear regression model to predict the duration of taxi trips in New Y
 
 ## Week 2: Experiment tracking and model management with MLflow  
 
+### Overview
+Week 2 focused on implementing experiment tracking and model management using MLflow. I learned how to track experiments, manage models, perform hyperparameter optimization, and use model registries to manage the complete ML model lifecycle.
+
+### Key Concepts Covered
+* MLflow fundamentals and installation
+* Experiment tracking and logging
+* Model autologging capabilities
+* MLflow tracking server setup
+* Hyperparameter optimization with tracking
+* Model registry and model promotion workflows
+* Backend stores and artifact management
+
+### Project: Enhanced NYC Taxi Trip Duration Prediction with MLflow
+
+Building upon Week 1's linear regression model, I implemented comprehensive experiment tracking using MLflow with the Green Taxi Trip Records dataset.
+
+#### 1. MLflow Setup and Installation
+* **Environment Setup**: Created a dedicated Python environment for MLflow
+* **Installation**: Installed MLflow Python package using pip/conda
+* **Version Verification**: Confirmed MLflow installation and version
+
+#### 2. Data Pipeline Enhancement
+* **Dataset**: Used Green Taxi Trip Records for January, February, and March 2023 (parquet format)
+* **Preprocessing Script**: Used `preprocess_data.py` to:
+  - Load data from specified taxi data folder
+  - Fit DictVectorizer on training set (January 2023)
+  - Save preprocessed datasets and DictVectorizer to disk
+* **Output Management**: Generated multiple preprocessed files for downstream tasks
+
+#### 3. Model Training with Autologging
+* **Model**: RandomForestRegressor from Scikit-Learn
+* **Training Script**: Used `train.py` with MLflow integration:
+  - Enabled MLflow autologging
+  - Wrapped training code with `mlflow.start_run()` context
+  - Tracked RMSE scores on validation set
+  - Logged model parameters automatically
+* **Parameter Tracking**: Monitored key parameters like `min_samples_split`
+
+#### 4. MLflow Tracking Server Configuration
+* **Local Server Setup**: Launched MLflow tracking server locally
+* **Backend Configuration**: 
+  - Used SQLite database for backend store
+  - Configured artifacts folder for artifact storage
+  - Set up proper server parameters including `default-artifact-root`
+* **Model Registry Access**: Enabled model registry functionality through server setup
+
+#### 5. Hyperparameter Optimization with Tracking
+* **Optimization Framework**: hyperparameter tuning using hyperopt
+* **Enhanced HPO Script**: Modified `hpo.py` to:
+  - Log validation RMSE for each optimization run
+  - Track hyperparameter combinations
+  - Store results in "random-forest-hyperopt" experiment
+  - Record optimization progress without autologging
+* **Performance Monitoring**: Tracked validation RMSE across multiple hyperparameter configurations
+
+#### 6. Model Registry and Promotion
+* **Model Selection**: Used `register_model.py` to:
+  - Identify top 5 performing models from hyperparameter optimization
+  - Evaluate selected models on test set (March 2023 data)
+  - Calculate test RMSE for model comparison
+* **Model Registration**: 
+  - Used `mlflow.register_model()` for model registration
+  - Implemented proper model URI formatting: `"runs:/<RUN_ID>/model"`
+  - Created "random-forest-best-models" experiment for final evaluation
+* **Best Model Promotion**: Selected and registered the model with lowest test RMSE
+
+### Technical Implementation Highlights
+
+#### MLflow Components Used
+* **Tracking**: Experiment and run logging
+* **Models**: Model packaging and versioning  
+* **Model Registry**: Model lifecycle management
+* **UI**: Web-based experiment exploration
+
+#### Key MLflow Features Implemented
+* Automatic parameter and metric logging
+* Manual logging for hyperparameter optimization
+* Model artifact storage and retrieval
+* Experiment organization and comparison
+* Model registration and versioning
+
+#### Integration with ML Pipeline
+* **Data Preprocessing**: Tracked data transformation steps
+* **Model Training**: Logged training metrics and parameters
+* **Validation**: Recorded validation performance
+* **Testing**: Evaluated final model performance
+* **Deployment Preparation**: Registered production-ready model
+
+### Skills Developed
+* MLflow installation and configuration
+* Experiment tracking best practices
+* Model lifecycle management
+* Hyperparameter optimization tracking
+* Model registry workflows
+* Local tracking server setup and management
+* Integration of MLflow with scikit-learn models
+
+### Key Learnings
+* **Experiment Organization**: Proper structuring of ML experiments for reproducibility
+* **Model Versioning**: Managing different model versions through the registry
+* **Performance Tracking**: Systematic logging of model performance metrics
+* **Hyperparameter Management**: Efficient tracking of optimization experiments
+* **Production Readiness**: Preparing models for deployment through proper registration
+
+### Technical Stack
+* **MLflow**: Experiment tracking and model management
+* **Hyperopt**: Hyperparameter optimization
+* **Scikit-learn**: RandomForestRegressor implementation
+* **Pandas**: Data manipulation and preprocessing  
+* **SQLite**: Backend storage for tracking server
+* **Python**: Core programming language
+
+
+
 
 
 ### Resources
