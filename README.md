@@ -183,7 +183,7 @@ Week 3 focused on transforming ML experiments into robust, production-grade pipe
 
 #### 3. Orchestrator Selection and Setup
 - Compared Prefect, Airflow, Dagster, Kestra, and Mage  
-- **Selected Orchestrator**: `Prefect` for its developer-friendly design, simple syntax, and cloud-native capabilities  
+- **Selected Orchestrator**: `Prefect` for its developer-friendly design and simple syntax  
 - Installed and configured local Prefect environment  
 - Implemented and executed a "Hello World" flow to verify setup  
 
@@ -224,7 +224,7 @@ Week 3 focused on transforming ML experiments into robust, production-grade pipe
 - Scheduled runs using Prefect's `IntervalSchedule` and cron syntax  
 - Dynamic parameter passing across tasks and subflows  
 - Conditional task execution and retry logic  
-- Local and remote (Prefect Cloud) execution support  
+- Local execution with fully traceable pipeline runs  
 
 #### Data Management
 - Automated data ingestion from parquet files  
@@ -249,7 +249,7 @@ Week 3 focused on transforming ML experiments into robust, production-grade pipe
 ### Technical Stack
 - **Prefect**: ML pipeline orchestration and scheduling  
 - **MLflow**: Model tracking and lifecycle management  
-- **Docker**: Environment standardization and containerized task execution  
+- **Docker**: Environment standardization  
 - **Pandas & Scikit-learn**: Core ML processing libraries  
 - **Python**: Workflow and script development  
 - **SQL/YAML/JSON**: Data access and configuration formats  
