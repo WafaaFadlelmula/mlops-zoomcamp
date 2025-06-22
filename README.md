@@ -156,7 +156,120 @@ Building upon Week 1's linear regression model, I implemented comprehensive expe
 * **Python**: Core programming language
 
 
+## Week 3: Orchestration and ML Pipelines
+### Overview
+Week 3 focused on transforming ML experiments into production-ready pipelines using orchestration tools. The goal was to convert notebook-based workflows into automated, scheduled, and parameterized ML pipelines.
 
+### Key Concepts Covered
+
+* Introduction to ML Pipelines and orchestration
+* Converting Jupyter notebooks to Python scripts
+* Orchestration tools comparison and selection
+* Pipeline parameterization and scheduling
+* Workflow backfilling and deployment
+* Production pipeline best practices
+
+### Project: Orchestrated ML Pipeline Implementation
+**1. ML Pipeline Introduction**
+
+Understanding the need for ML pipeline orchestration
+Identifying pipeline components and dependencies
+Designing workflow structure for taxi trip duration prediction
+
+**2. Notebook to Script Conversion**
+
+Converted existing Jupyter notebooks to modular Python scripts
+Separated data preprocessing, model training, and evaluation logic
+Created reusable functions for each pipeline step
+Implemented proper error handling and logging
+
+**3. Orchestrator Selection and Setup**
+
+Evaluated orchestration tools (Airflow, Prefect, Dagster, Kestra, Mage)
+Selected [chosen orchestrator] based on project requirements
+Configured local development environment
+Implemented and tested "Hello World" workflow
+
+**4. Pipeline Orchestration**
+
+Created orchestrated workflow from previous week's code
+Defined pipeline steps:
+
+Data extraction and preprocessing
+Model training with MLflow tracking
+Model validation and evaluation
+Model registration and promotion
+
+
+Implemented proper task dependencies and error handling
+
+**5. Workflow Parameterization**
+
+Configured monthly pipeline scheduling
+Implemented dynamic data loading:
+
+Training data: Two months ago
+Validation data: One month ago
+
+
+Added configurable parameters for model hyperparameters
+Created flexible date-based data partitioning
+
+**6. Backfilling Implementation**
+
+Developed backfill capabilities for historical data processing
+Implemented date range processing for past months
+Created batch processing for multiple time periods
+Added validation for backfill operations
+
+
+### Technical Implementation
+#### Pipeline Architecture
+
+Modular script design with clear separation of concerns
+Parameterized workflows for flexible execution
+Robust error handling and recovery mechanisms
+Comprehensive logging and monitoring
+
+#### Orchestration Features
+
+Scheduled execution with cron-like scheduling
+Dynamic parameter passing between tasks
+Conditional execution based on data availability
+Retry mechanisms for failed tasks
+
+#### Data Management
+
+Automated data ingestion from multiple sources
+Data quality validation and preprocessing
+Versioned data artifacts with proper lineage
+Efficient data storage and retrieval
+
+#### Skills Developed
+
+Pipeline design and orchestration
+Production-ready code development
+Workflow scheduling and automation
+Container orchestration with Docker
+Backfill and historical data processing
+Production MLflow deployment
+
+#### Key Learnings
+
+Pipeline Orchestration: Converting ad-hoc ML experiments into production workflows
+Automation: Scheduling and parameterizing ML pipelines for regular execution
+Scalability: Designing pipelines that can handle varying data volumes and time periods
+Reliability: Implementing robust error handling and recovery mechanisms
+Deployment: Containerizing ML services for consistent deployment
+
+#### Technical Stack
+
+Perfect: Pipeline orchestration and scheduling
+Docker: Containerization and service deployment
+MLflow: Continued experiment tracking and model management
+Python: Core pipeline development
+SQL/Database: Data storage and retrieval
+YAML/JSON: Configuration management
 
 
 ### Resources
