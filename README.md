@@ -271,6 +271,150 @@ Python: Core pipeline development
 SQL/Database: Data storage and retrieval
 YAML/JSON: Configuration management
 
+## Week 4: Model Deployment
+
+### Overview
+Week 4 focused on deploying machine learning models to production using different deployment strategies. The goal was to learn various deployment approaches including web services, streaming, and batch processing.
+
+### Key Concepts Covered
+- Web services, streaming, and batch processing strategies
+- Model serving with Flask and Docker
+- Integration with MLflow model registry
+- Real-time and batch scoring implementations
+- Production deployment best practices
+
+### Project: Multi-Modal ML Model Deployment
+
+I deployed machine learning models using multiple strategies, integrating web service APIs, real-time streaming, and batch processing. Each deployment path was tied to realistic use cases and production-level requirements.
+
+#### 1. Deployment Strategy Overview
+* **Web Services**: Real-time prediction APIs for interactive applications  
+* **Streaming**: Event-driven predictions using real-time data streams  
+* **Batch Processing**: Scheduled and large-scale inference for offline workloads  
+* Evaluated trade-offs, scalability, and performance needs for each approach
+
+#### 2. Web Service Deployment with Flask and Docker
+
+**Flask Application Development**
+- Built REST API endpoints for model predictions
+- Implemented input validation, error handling, and logging
+- Added health checks and monitoring endpoints
+
+**Docker Containerization**
+- Created Dockerfile for Flask application
+- Used multi-stage builds to optimize image size
+- Managed dependencies and environment variables
+
+**Model Integration**
+- Loaded trained models from local storage
+- Applied preprocessing pipeline and prediction logic
+- Managed versioning and model updates within the app
+
+#### 3. MLflow Model Registry Integration
+
+**Model Retrieval from Registry**
+- Connected Flask app to MLflow tracking server
+- Loaded models from MLflow model registry
+- Implemented version control and automatic updates
+
+**Production Model Serving**
+- Served production-stage models via registry
+- Integrated model promotion and staging workflows
+- Added model monitoring and fallback mechanisms
+
+#### 4. Streaming Deployment (Optional)
+
+**AWS Kinesis and Lambda Integration**
+- Configured Kinesis data streams for real-time input
+- Triggered Lambda functions for model predictions
+- Implemented event-driven architecture and dead letter queues
+
+**Real-time Processing**
+- Applied streaming data preprocessing
+- Performed real-time inference
+- Streamed output to downstream systems and added monitoring
+
+#### 5. Batch Scoring Implementation
+
+**Scoring Script Development**
+- Built batch scoring scripts for offline predictions
+- Loaded and preprocessed large datasets
+- Applied trained model for inference and saved outputs
+
+**Batch Processing with Orchestration**
+- Integrated scripts into orchestration tools (e.g., Airflow)
+- Managed model retrieval from MLflow registry
+- Scheduled batch jobs and implemented monitoring
+
+#### 6. Production Deployment Considerations
+
+**Scalability and Performance**
+- Used load balancing and auto-scaling in web services
+- Optimized model inference time and added caching
+- Allocated compute resources efficiently
+
+**Monitoring and Observability**
+- Logged model metrics and service performance
+- Configured alerts for failures and performance drops
+- Detected model drift and deployed mitigation strategies
+
+### Technical Implementation
+
+#### Web Service Architecture
+- Flask-based REST API with middleware and monitoring
+- Docker for environment consistency
+- Auto-scaling and logging enabled in deployment setup
+
+#### Model Management
+- Integrated MLflow registry for versioned models
+- Implemented automated updates and rollback mechanisms
+- Enabled A/B testing and performance tracking
+
+#### Deployment Strategies
+- Supported multiple environments (dev/staging/prod)
+- Implemented blue-green and canary deployment
+- Planned disaster recovery and backup solutions
+
+### Skills Developed
+- Web service development with Flask
+- Container orchestration with Docker
+- Model serving and REST API creation
+- MLflow registry integration
+- Streaming and batch deployment techniques
+- Production monitoring and scaling
+
+### Key Learnings
+- **Deployment Patterns**: When and how to use web, batch, and streaming strategies  
+- **Model Serving**: Built scalable, real-time inference systems  
+- **Production Readiness**: Integrated observability and version control  
+- **System Integration**: Connected ML pipelines to robust production systems  
+- **Scalability**: Designed deployments that handle production-scale demands  
+
+### Technical Stack
+- **Flask**: Web service framework  
+- **Docker**: Containerization for portable deployments  
+- **MLflow**: Model registry and tracking  
+- **AWS Kinesis & Lambda**: Streaming deployment components (optional)  
+- **Orchestration Tool**: Airflow or equivalent for batch processing  
+- **Monitoring Tools**: Logging and metric collection frameworks  
+- **Python**: Core development language  
+
+### Overall Progress Summary
+
+#### Completed Modules
+✅ Week 1: Introduction to MLOps and baseline model development  
+✅ Week 2: Experiment tracking and model management with MLflow  
+✅ Week 3: Orchestration and ML pipelines  
+✅ Week 4: Model deployment strategies  
+
+#### Key Skills Acquired
+- End-to-end ML pipeline development  
+- Experiment tracking and versioning  
+- Production-ready code and APIs  
+- Model deployment and serving strategies  
+- Workflow orchestration  
+- Docker containerization  
+- MLflow registry integration  
 
 ### Resources
 - [MLOps Zoomcamp GitHub Repository](https://github.com/DataTalksClub/mlops-zoomcamp)
