@@ -157,119 +157,103 @@ Building upon Week 1's linear regression model, I implemented comprehensive expe
 
 
 ## Week 3: Orchestration and ML Pipelines
+
 ### Overview
-Week 3 focused on transforming ML experiments into production-ready pipelines using orchestration tools. The goal was to convert notebook-based workflows into automated, scheduled, and parameterized ML pipelines.
+Week 3 focused on transforming ML experiments into robust, production-grade pipelines using orchestration tools. The primary objective was to migrate notebook-based workflows into automated, scheduled, and parameterized pipelines with modular, maintainable code.
 
 ### Key Concepts Covered
+- ML pipelines and workflow orchestration fundamentals  
+- Converting Jupyter notebooks into Python modules  
+- Comparison and selection of orchestration tools  
+- Dynamic pipeline parameterization and scheduling  
+- Workflow backfilling and automation  
+- Best practices for pipeline reliability and maintainability  
 
-* Introduction to ML Pipelines and orchestration
-* Converting Jupyter notebooks to Python scripts
-* Orchestration tools comparison and selection
-* Pipeline parameterization and scheduling
-* Workflow backfilling and deployment
-* Production pipeline best practices
+### Project: Orchestrated ML Pipeline for Taxi Trip Duration Prediction
 
-### Project: Orchestrated ML Pipeline Implementation
-**1. ML Pipeline Introduction**
+#### 1. ML Pipeline Introduction
+- Outlined the motivation for orchestration: reproducibility, automation, and monitoring  
+- Identified core pipeline components: data ingestion, preprocessing, model training, evaluation, and promotion  
+- Mapped pipeline stages to Week 1–2 project work  
 
-Understanding the need for ML pipeline orchestration
-Identifying pipeline components and dependencies
-Designing workflow structure for taxi trip duration prediction
+#### 2. Notebook to Script Conversion
+- Refactored Jupyter notebooks into clean, modular Python scripts  
+- Created reusable functions for preprocessing, training, evaluation, and model handling  
+- Added structured logging and exception handling across all scripts  
 
-**2. Notebook to Script Conversion**
+#### 3. Orchestrator Selection and Setup
+- Compared Prefect, Airflow, Dagster, Kestra, and Mage  
+- **Selected Orchestrator**: `Prefect` for its developer-friendly design, simple syntax, and cloud-native capabilities  
+- Installed and configured local Prefect environment  
+- Implemented and executed a "Hello World" flow to verify setup  
 
-Converted existing Jupyter notebooks to modular Python scripts
-Separated data preprocessing, model training, and evaluation logic
-Created reusable functions for each pipeline step
-Implemented proper error handling and logging
+#### 4. Pipeline Orchestration
+- Transformed previous ML workflow into a Prefect flow  
+- Defined core tasks:
+  - Data extraction and validation  
+  - Preprocessing and feature engineering  
+  - Model training with MLflow autologging  
+  - Evaluation and RMSE calculation  
+  - Model registration and promotion using MLflow registry  
+- Implemented task dependencies and failure handling using Prefect’s flow control  
 
-**3. Orchestrator Selection and Setup**
+#### 5. Workflow Parameterization
+- Designed flexible parameter interfaces for:
+  - Data paths and date ranges  
+  - Model hyperparameters  
+  - Training and validation windows  
+- Enabled monthly scheduling with dynamic data loading:
+  - **Training set**: Two months prior  
+  - **Validation set**: One month prior  
 
-Evaluated orchestration tools (Airflow, Prefect, Dagster, Kestra, Mage)
-Selected [chosen orchestrator] based on project requirements
-Configured local development environment
-Implemented and tested "Hello World" workflow
-
-**4. Pipeline Orchestration**
-
-Created orchestrated workflow from previous week's code
-Defined pipeline steps:
-
-Data extraction and preprocessing
-Model training with MLflow tracking
-Model validation and evaluation
-Model registration and promotion
-
-
-Implemented proper task dependencies and error handling
-
-**5. Workflow Parameterization**
-
-Configured monthly pipeline scheduling
-Implemented dynamic data loading:
-
-Training data: Two months ago
-Validation data: One month ago
-
-
-Added configurable parameters for model hyperparameters
-Created flexible date-based data partitioning
-
-**6. Backfilling Implementation**
-
-Developed backfill capabilities for historical data processing
-Implemented date range processing for past months
-Created batch processing for multiple time periods
-Added validation for backfill operations
-
+#### 6. Backfilling Implementation
+- Developed a utility for historical batch processing  
+- Implemented date range backfilling for January–March 2023  
+- Ensured correct sequencing and isolation of backfill runs  
+- Validated outputs for consistency and correctness across all time periods  
 
 ### Technical Implementation
-#### Pipeline Architecture
 
-Modular script design with clear separation of concerns
-Parameterized workflows for flexible execution
-Robust error handling and recovery mechanisms
-Comprehensive logging and monitoring
+#### Pipeline Architecture
+- Modular script structure with clear responsibilities  
+- Parameterized flow definitions for extensibility  
+- Robust error handling using try-except blocks  
+- Integrated logging at each task level  
 
 #### Orchestration Features
-
-Scheduled execution with cron-like scheduling
-Dynamic parameter passing between tasks
-Conditional execution based on data availability
-Retry mechanisms for failed tasks
+- Scheduled runs using Prefect's `IntervalSchedule` and cron syntax  
+- Dynamic parameter passing across tasks and subflows  
+- Conditional task execution and retry logic  
+- Local and remote (Prefect Cloud) execution support  
 
 #### Data Management
+- Automated data ingestion from parquet files  
+- Data quality checks: range validation and null checks  
+- Applied consistent preprocessing with one-hot encoding and filtering  
+- Version-controlled feature artifacts (e.g., DictVectorizer)  
 
-Automated data ingestion from multiple sources
-Data quality validation and preprocessing
-Versioned data artifacts with proper lineage
-Efficient data storage and retrieval
+### Skills Developed
+- End-to-end ML pipeline architecture  
+- Orchestration with Prefect and scheduled workflows  
+- Robust code modularization and logging  
+- Historical data backfilling and batch processing  
+- Continued MLflow integration within orchestrated environments  
 
-#### Skills Developed
+### Key Learnings
+- **Workflow Orchestration**: Transitioned ML experimentation into production-grade workflows  
+- **Scheduling & Automation**: Enabled regular, repeatable training and evaluation  
+- **Reusability**: Built parameterized, flexible pipelines adaptable to new data  
+- **Backfill Techniques**: Processed historical data with confidence  
+- **Operational Reliability**: Introduced monitoring, logging, and recovery logic  
 
-Pipeline design and orchestration
-Production-ready code development
-Workflow scheduling and automation
-Container orchestration with Docker
-Backfill and historical data processing
-Production MLflow deployment
+### Technical Stack
+- **Prefect**: ML pipeline orchestration and scheduling  
+- **MLflow**: Model tracking and lifecycle management  
+- **Docker**: Environment standardization and containerized task execution  
+- **Pandas & Scikit-learn**: Core ML processing libraries  
+- **Python**: Workflow and script development  
+- **SQL/YAML/JSON**: Data access and configuration formats  
 
-#### Key Learnings
-
-Pipeline Orchestration: Converting ad-hoc ML experiments into production workflows
-Automation: Scheduling and parameterizing ML pipelines for regular execution
-Scalability: Designing pipelines that can handle varying data volumes and time periods
-Reliability: Implementing robust error handling and recovery mechanisms
-Deployment: Containerizing ML services for consistent deployment
-
-#### Technical Stack
-
-Perfect: Pipeline orchestration and scheduling
-Docker: Containerization and service deployment
-MLflow: Continued experiment tracking and model management
-Python: Core pipeline development
-SQL/Database: Data storage and retrieval
-YAML/JSON: Configuration management
 
 ## Week 4: Model Deployment
 
